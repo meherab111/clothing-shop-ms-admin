@@ -1,0 +1,261 @@
+
+<?php
+session_start();
+ob_start();
+
+if (!isset($_SESSION['x'])) 
+{
+	header("Location: log_html.php");
+}	
+	
+?>
+ <?php include 'header.php';?>
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Profile</h2>
+
+<table>
+
+	<thead>
+		<tr>
+			<th>| Id     |</th>
+			<th>| Name   |</th>
+			<th>| Phone  |</th>
+			<th>| Email  |</th>
+			<th>| Status |</th>
+		</tr>	
+	</thead>
+	
+	<tbody>
+	<?php
+	
+	
+		$email = $_SESSION['email'];
+		
+		include "db.php";
+
+		$select_query = "SELECT * FROM registered WHERE email = '$email'";
+	
+
+		$query = mysqli_query($conn, $select_query);
+		
+		$email_count = mysqli_num_rows($query);
+
+		if($email_count > 0)
+		{
+			$fetch = mysqli_fetch_array($query);
+		
+
+
+
+	?>
+		<tr>
+			<td><center><?php echo $fetch['id'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['name'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['phone'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['email'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['status'];?> &nbsp &nbsp </center></td>
+
+		</tr>
+	<?php		
+			
+		}
+  
+
+
+	?>
+	
+	</tbody>
+	
+
+</table>
+
+<!-- _____________________________________PROFILE UPDATE_______________________ -->		
+
+<?php
+$name  = $phone = $password  = "";
+$nameErr  = $phoneErr = $passwordErr = "";
+
+//Name 
+if ($_SERVER['REQUEST_METHOD'] === "POST") 
+{
+    $flag = false;
+
+    if (empty($_POST["name"])) {
+        $nameErr = "*Name is required";
+        $flag = true;
+    } else {
+        $name = sanitize($_POST["name"]);
+        if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
+            $nameErr = "*Only letters and white space allowed";
+            $flag = true;
+        }
+    }
+//Phone 
+    if (empty($_POST["phone"])) {
+        $phoneErr = "*Phone is required";
+        $flag = true;
+    } else {
+        $phone = sanitize($_POST["phone"]);
+        if (!preg_match("/^\d+$/", $phone)) {
+            $phoneErr = "*Only numbers allowed";
+            $flag = true;
+        }
+		else if (!preg_match("/^0[1-9][0-9]{9}$/", $phone)) {
+            $phoneErr = "*Only BD number format allowed";
+            $flag = true;
+        }
+    }
+
+
+
+
+		if ($flag === false) 
+		{
+	
+			$_SESSION['email'] = $email;
+
+				include "db.php";
+				$id_updates = $fetch['id'];
+
+				// Insert data into the database
+				$update_query = "UPDATE registered SET name = '$name',phone = '$phone'
+				 WHERE id = '$id_updates'";
+				
+				
+				$checkUpdateQuery = mysqli_query($conn,$update_query);
+						
+
+				if ($checkUpdateQuery)
+				{
+
+					echo "<center>Profile Updated Succesfully.</center>";
+
+				}
+			
+
+
+			}
+
+}
+
+
+function sanitize($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+
+
+
+ <table>
+	<tr>
+		 <form method="post" action="" novalidate>
+			<td>
+                <fieldset>
+				
+                    <legend><strong>Update Profile</strong></legend>
+					
+					<?php	
+						include "db.php";
+						$id = $fetch['id'];
+						
+						$show_query = "SELECT * FROM registered WHERE id = '$id'";
+						
+						$show_data = mysqli_query($conn, $show_query);
+						
+						$arr_data = mysqli_fetch_array($show_data);
+						
+					?>
+                    
+                       
+                      <table style="padding: 15px;">
+                            <tr style="height:50px">
+                                <td style="width:10%; text-align:center">
+                                <?php echo "Name "?> </td>
+                                    <td>
+                                : <input type="text" id="name" name="name" value = "<?php echo $arr_data['name'];?>">
+								<br>
+								<?php echo $nameErr;?>
+                                </td>
+                            </tr>
+
+                           <tr style="height:50px">
+                                
+                                <td style="width:10%; text-align:center" >
+                                    <label for="phone">Phone Number </label></td>
+                                  <td >  
+								  : <input type="tel" id="phone" name="phone" maxlength="11" value = "<?php echo $arr_data['phone'];?>" >
+								  <br>
+								  <?php echo $phoneErr;?>
+                                </td>
+                            </tr>
+
+				</table>
+				<input type="submit" name="update" value="Update">	
+                </fieldset>
+			</td>
+			<td>
+				<fieldset>
+				<table>			
+				<legend><strong>Update Password</strong></legend>
+				<br>
+				<br>
+				<strong><p>UPDATE PASSWORD?</strong><a href="update_password.php"> Click Here</a></p>
+				<br>
+				<br>
+				</table>
+				</fieldset>
+			</td>
+		</form>
+			
+		<form action="img.php" method="post" enctype="multipart/form-data">
+			<td>		<?php
+					if(isset($_SESSION['img']) && $_SESSION != '')
+					{
+						echo $_SESSION['img'];
+						
+						unset($_SESSION['img']);
+					}
+					?>
+				<fieldset>
+				<table>
+				<legend><strong>Update Image</strong></legend>
+				<img src=" <?php echo "img/". $fetch['image']; ?> " width="150" heigth="150" alt = "Please Upload a Profile Picture.">
+				<br>
+				<label for="">Image </label>
+                : <input type="file" id="image" name="image">
+				<br><br>
+				<input type="submit" name="upload" value = "Update Image">
+				<br>
+				</table>
+				</fieldset>
+
+			</td>
+				
+		</form>			
+				
+				
+				
+           <br><br>
+			
+	</tr>
+</table>
+          
+			
+            <br>  
+		<a href ="dashboard.php">Go Back</a>
+		
+
+</body>
+</html>
+<center>
+<?php include 'footer.php';?>	
+</center>
+
+

@@ -1,0 +1,1682 @@
+/*------------------------------------------------Header Section-------------------------------------------------*/
+
+body
+{
+	 font-family: 'Times New Roman', serif;
+	background: linear-gradient(45deg, rgb(172, 164, 237) 0%, rgb(152, 137, 163) 50%, rgb(157, 183, 199) 100%);
+}
+
+
+.head-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Verdana', sans-serif; 
+}
+
+.header-container {
+
+	padding-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(72, 49, 122,0.7); /* Purple color */
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px; /* Adjust the height as needed */
+}
+
+.img-hed {
+	padding-top: 20px;
+    margin-right: 10px;
+    height: 60px; /* Adjust the height as needed */
+    width: 60px; /* Adjust the width as needed */
+    border-radius: 50%;
+}
+
+.header-h1 {
+	padding-top: 20px;
+    font-size: 2em; /* Adjust the font size as needed */
+    margin: 0;
+}
+
+.span-txt
+{
+	padding-top: 28px;
+	padding-left: 20px;
+	font-size: 1.3em;
+
+}
+
+
+
+
+/*------------------------------------------------Footer Section-------------------------------------------------*/
+
+.foot-body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Verdana', sans-serif; /* Choose your preferred font */
+}
+
+
+.footer {
+	    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgba(72, 49, 122,0.7); /* Purple color */
+    color: white;
+    text-align: center;
+    padding: 30px; /* Adjust padding as needed */
+}
+
+.img-foot {
+    margin-right: 10px;
+    height: 20px; /* Adjust the height as needed */
+}
+
+.footer strong {
+    font-weight: bold;
+}
+
+.footer .gdw {
+	padding-left: 5px;
+    color: orange; /* Change color as needed */
+}
+
+.footer .mhb {
+    	padding-left: 5px;
+    color: orange; /* Change color as needed */
+}
+
+
+/*------------------------------------------------Login Section-------------------------------------------------*/
+
+.login-pic
+{
+	height: 50px;
+	width: 50px;
+}
+
+
+
+.err
+{
+	font-size: 1.17em;
+	font-family: 'times new roman', serif;
+	color: orangered;
+}
+
+
+
+.log-fieldset
+{
+	margin-top: 150px;
+	height: 42vh;
+  width: 19vw;
+  
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+  background-color: rgb(230, 220, 229);
+
+
+}
+
+
+.log-tr
+{
+	height: 60px;
+}
+
+.log-td
+{
+	text-align: center;
+}
+
+
+.log-input
+{
+	width: 300px;
+	height: 25px;
+	color: black;
+	font-size: 1.07em;
+	background-color: white;
+}
+
+.log-input:hover
+{
+background-color: rgb(218, 223, 237);
+}
+
+.log-input:focus
+{
+background-color: rgb(218, 223, 237);
+}
+
+
+
+.log-check
+{
+
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+.log-f-pass
+{
+	color: rgb(69, 75, 143);
+	font-weight: bold;
+font-size: 1.03em;
+	
+}
+
+.log-reg
+{
+	color: rgb(69, 75, 143);
+	font-weight: bold;
+	font-size: 1.03em;
+}
+
+
+
+.log-f-pass:hover
+{
+	cursor: pointer;
+	text-decoration: none;
+	color:  rgb(72, 148, 71);
+	
+}
+
+.log-reg:hover
+{
+	cursor: pointer;
+	text-decoration: none;
+	color:  rgb(72, 148, 71);
+	
+}
+
+
+
+.log-button
+{
+
+	height: 35px;
+	width: 300px;
+	
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+}
+
+
+
+.log-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+	
+}
+
+
+
+/*-------------------------------------------------Password Reset Section-------------------------------------------------*/
+
+.forgot-pass
+{
+		height: 50px;
+	width: 50px;
+	margin-bottom: 20px;
+}
+
+
+
+.pass-res-fieldset
+{
+
+	margin-top: 200px;
+	height: 30vh;
+  width: 19vw;
+  
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+  background-color: rgb(230, 220, 229);
+  
+}
+
+
+.pass-res-tr
+{
+	height: 60px;
+}
+
+.pass-res-td
+{
+	text-align: center;
+
+}
+
+.pass-res-input
+{
+	width: 300px;
+	height: 25px;
+	color: black;
+	font-size: 1.07em;
+	background-color: white;
+}
+
+.pass-res-input:hover
+{
+background-color: rgb(218, 223, 237);
+}
+
+.pass-res-input:focus
+{
+background-color: rgb(218, 223, 237);
+}
+
+.pass-res-to-reg{
+
+	color: rgb(69, 75, 143);
+	font-weight: bold;
+	font-size: 1.07em;
+}
+
+
+
+.pass-res-to-reg:hover
+{
+	cursor: pointer;
+	text-decoration: none;
+	color:  rgb(72, 148, 71);
+	
+}
+
+.pass-res-button
+{
+
+	height: 35px;
+	width: 300px;
+	
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+
+}
+
+.pass-res-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+	
+}
+
+
+.pass-res-goback
+{
+
+	text-decoration: none;
+
+}
+
+.img-back
+{
+	width: 50px; 
+	height: 50px;
+	margin-top: 60px;
+	margin-left: 80px;	
+
+}
+
+.img-back:hover
+{
+transform: scale(1.3);
+
+}
+
+
+
+/*-------------------------------------------------Change Password Section-------------------------------------------------*/
+
+
+.change-pass
+{
+		height: 50px;
+	width: 50px;
+}
+
+
+.cng-pass-fieldset
+{
+	margin-top: 150px;
+	height: 39vh;
+  width: 19vw;
+  
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+  background-color: rgb(230, 220, 229);
+  
+}
+
+
+
+.cng-pass-tr
+{
+	height: 60px;
+}
+
+.cng-pass-td
+{
+	
+	text-align: center;
+
+}
+
+.cng-pass-input
+{
+	width: 300px;
+	height: 25px;
+	color: black;
+	font-size: 1.07em;
+	background-color: white;
+}
+
+.cng-pass-input:hover
+{
+background-color: rgb(218, 223, 237);
+}
+
+
+.cng-pass-to-log:hover
+{
+background-color: rgb(218, 223, 237);
+	
+}
+
+.cng-pass-input:focus
+{
+background-color: rgb(218, 223, 237);
+}
+
+.cng-pass-button
+{
+
+	height: 35px;
+	width: 300px;
+	
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+
+}
+
+
+
+.cng-pass-button:hover
+{
+	
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+	
+}
+
+.cng-pass-to-log
+{
+		color: rgb(69, 75, 143);
+	font-weight: bold;
+	font-size: 1.03em;
+
+}
+.cng-pass-to-log:hover
+{
+	cursor: pointer;
+	text-decoration: none;
+	color:  rgb(72, 148, 71);
+	
+}
+
+
+
+
+/*-------------------------------------------------Registration Section-------------------------------------------------*/
+
+
+.Regs-pic{
+
+height: 50px;
+width: 50px;
+
+}
+
+.reg-fieldset
+{
+	margin-top: 150px;
+	height: 53vh;
+  width: 19vw;
+  
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+  background-color: rgb(230, 220, 229);
+  	
+}
+
+
+
+.reg-tr
+{
+	height: 60px;
+}
+
+.reg-td
+{
+	text-align: center;
+
+}
+
+
+
+.reg-input
+{
+	width: 300px;
+	height: 25px;
+	color: black;
+	font-size: 1.07em;
+	background-color: white;
+}
+
+.reg-input:hover
+{
+background-color: rgb(218, 223, 237);
+}
+
+.reg-input:focus
+{
+background-color: rgb(218, 223, 237);
+}
+
+
+.reg-to-log
+{
+	color: rgb(69, 75, 143);
+	font-weight: bold;
+	font-size: 1.03em;
+}
+
+.reg-to-log:hover
+{
+	cursor: pointer;
+	text-decoration: none;
+	color:  rgb(72, 148, 71);
+	
+}
+
+.reg-button
+{
+
+	height: 35px;
+	width: 300px;
+	
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+
+}
+
+
+
+.reg-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+	
+}
+
+
+/*-------------------------------------------------Dashboard Section-------------------------------------------------*/
+
+
+
+.dashboard-time
+{
+	margin: 0 45rem;
+	margin-top: 0px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid rgb(72, 49, 122);
+	border-radius: 5px;
+}
+
+.dashboard-header
+{
+
+margin: 0px;
+font-size: 2em;
+background-color: rgb(96, 111, 224);
+color: black;
+padding: 20px;
+text-align: center;
+
+}
+
+
+.dashboard-div {
+
+	
+	margin: 0 7rem;
+	margin-top: 100px;
+	display: flex;
+	flex-direction: row-reverse;
+	align-items: center;
+	justify-content: space-between;
+
+
+
+}
+
+.content-ul{
+
+	list-style: none;
+	
+}
+
+.content-ul li{
+
+	margin-bottom: 2rem ;
+	transition: transform 0.4s ease;
+}
+
+.content-ul li:hover{
+
+	transform: translate(5px, -6px);
+	
+}
+
+.content-ul li a{
+
+	text-decoration: none;
+	color: black;
+	font-size: 1.4em;
+
+}
+
+.content-ul li a:hover{
+	
+	color: rgb(96, 111, 224);
+	
+}
+
+
+
+
+.img-container a {
+
+	text-decoration: none;
+
+}
+
+.img-container p {
+
+	margin-top: 2.5px;
+	text-decoration: none;
+	color: black;
+	text-align: center;
+	font-size: 1.1em;
+
+}
+
+
+.img-container a img{
+
+box-shadow: 1px 1px 6px black;
+	
+}
+
+.img-container:hover {
+
+	transform: scale(1.05);
+
+}
+
+
+
+
+.contents {
+   
+    padding-left: 20px;
+}
+
+.dashboard-ancor {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.dashboard-ancor:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}
+
+
+.dashboard-button
+{
+
+	text-decoration: none;
+
+}
+
+.img-logout
+{
+	width: 60px; 
+	height: 60px;
+	margin-top: 70px;
+	margin-left: 80px;	
+
+}
+
+.img-logout:hover
+{
+	cursor: pointer;
+transform: scale(1.2);
+
+}
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+
+
+
+
+/*-------------------------------------------------Display Section-------------------------------------------------*/
+
+
+
+
+
+.display-header
+{
+margin: 0px;
+font-size: 1.4em;
+background-color: rgb(96, 111, 224);
+color: black;
+padding: 20px;
+text-align: center;
+
+}
+
+
+.display-th {
+
+width: 90px;
+font-size: 1.07em;
+background-color: rgb(96, 111, 224);
+padding: 10px;
+color: black;
+text-align: center;
+
+
+}
+
+
+
+.display-td
+{
+width: 90px;
+	align-content: center;
+   text-align: center;
+    padding: 15px;
+    font-size: 1em;
+     border-bottom: 2px solid rgb(80, 40, 140);
+}
+/*-------------------------------------------------*/
+
+.update-user
+{
+	height: 50px;
+	width: 50px;
+}
+
+.emp-div-dis{
+		text-align: center;
+	margin-top: 100px;
+
+	font-size: 1.07em;
+display: flex;
+justify-content: center;
+flex-direction: row;
+
+
+}
+
+
+.pro-update-fieldset
+{
+	margin-top: 50px;
+	height: 36vh;
+  width: 19vw;
+  
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+  background-color: rgb(230, 220, 229);
+
+  	
+}
+
+
+.pro-update-tr
+{
+
+	height: 60px;	
+}
+
+.pro-update-td
+{
+	text-align: center;
+
+}
+
+
+
+.pro-update-input
+{
+	width: 300px;
+	height: 25px;
+	color: black;
+	font-size: 1.07em;
+	background-color: white;
+}
+
+.pro-update-input:hover
+{
+background-color: rgb(218, 223, 237);
+}
+
+.pro-update-input:focus
+{
+background-color: rgb(218, 223, 237);
+}
+
+
+.pro-up-button
+{
+	height: 35px;
+	width: 300px;
+	
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+}
+
+
+
+.pro-up-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+	
+}
+
+
+
+.update-pass:hover
+{
+	text-decoration: none;
+	color: rgb(72, 148, 71);
+	
+}
+
+
+.pro-update-tr-pic
+{
+	display: flex;
+	justify-content: center;
+}
+
+.update-img
+{
+	height: 35px;
+	width: 35px;
+}
+
+.img-update-fieldset
+{
+	margin-left: 20px;
+	margin-top: 50px;
+	height: 36vh;
+  width: 19vw;
+  
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+  background-color: rgb(230, 220, 229);
+
+  
+}
+
+
+
+
+.img-button
+{
+	
+	height: 35px;
+	width: 300px;
+	
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+}
+
+
+
+.img-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+	
+}
+
+
+
+
+.display-goback
+{
+
+	text-decoration: none;
+
+}
+
+.img-back
+{
+	width: 50px; 
+	height: 50px;
+	margin-top: 60px;
+	margin-left: 80px;	
+
+}
+
+.img-back:hover
+{
+transform: scale(1.3);
+
+}
+
+
+/*-------------------------------------------------Update Password Section-------------------------------------------------*/
+
+.update-pass
+{
+		height: 50px;
+	width: 50px;
+}
+
+
+
+.up-pass-header
+{
+margin: 0px;
+font-size: 1.4em;
+background-color: rgb(96, 111, 224);
+color: black;
+padding: 20px;
+text-align: center;
+
+}
+
+
+
+.update-pass-fieldset
+{
+
+		margin-top: 150px;
+	height: 38vh;
+  width: 19vw;
+  
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+  background-color: rgb(230, 220, 229);
+ 	
+}
+
+
+.update-pass-tr
+{
+	height: 60px;
+}
+
+.update-pass-td
+{
+	
+	text-align: center;
+
+}
+
+
+
+.update-pass-input
+{
+	
+	width: 300px;
+	height: 25px;
+	color: black;
+	font-size: 1.07em;
+	background-color: white;
+
+}
+
+
+.update-pass-input:hover
+{
+	
+	background-color: rgb(218, 223, 237);
+}
+
+.update-pass-input:focus
+{
+	background-color: rgb(218, 223, 237);
+}
+
+
+.update-pass-button
+{
+
+	height: 35px;
+	width: 300px;
+	
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+
+}
+
+
+
+.update-pass-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+	
+}
+
+.update-pass-goback
+{
+
+	text-decoration: none;
+
+}
+
+.img-back
+{
+	width: 50px; 
+	height: 50px;
+	margin-top: 60px;
+	margin-left: 80px;	
+
+}
+
+.img-back:hover
+{
+transform: scale(1.3);
+
+}
+
+
+/*-------------------------------------------------Product Section-------------------------------------------------*/
+
+.prod-det{
+
+		margin-top: 50px;
+		font-size: 1.07em ;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	padding-left: 20px;
+	padding-bottom: 20px;
+
+}
+
+
+
+.mst-prod
+{
+		display: flex;
+	justify-content: center;
+	flex-direction: row;
+	padding-top: 10px;
+font-size: 1.07em;
+	margin-bottom: 10px;
+}
+
+
+.Most-sold
+{
+
+			display: flex;
+	justify-content: center;
+	flex-direction: row;
+	padding-top: 20px;
+
+	margin-bottom: 10px;
+
+}
+
+.info-prod
+{
+
+		display: flex;
+	justify-content: left;
+	flex-direction: row;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	
+}
+
+.product-header
+{
+margin: 0px;
+font-size: 1.4em;
+background-color: rgb(96, 111, 224);
+color: black;
+padding: 20px;
+text-align: center;
+
+}
+
+
+.product-th
+{
+width: 90px;
+font-size: 1.07em;
+background-color: rgb(96, 111, 224);
+padding: 10px;
+color: black;
+text-align: center;
+
+}
+
+
+
+.product-td
+{
+width: 90px;
+	align-content: center;
+   text-align: center;
+    padding: 15px;
+    font-size: 1em;
+     border-bottom: 2px solid rgb(80, 40, 140);
+}
+
+.prod_data{
+
+	height: 35px;
+	width: 400px;
+	margin-left: 44.5em;
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+
+}
+
+
+.prod_data:hover{
+		transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+
+}
+
+
+.product-goback
+{
+
+	text-decoration: none;
+
+}
+
+.img-back
+{
+	width: 50px; 
+	height: 50px;
+	margin-top: 60px;
+	margin-left: 80px;	
+
+}
+
+.img-back:hover
+{
+transform: scale(1.3);
+
+}
+/*-------------------------------------------------Employee Section-------------------------------------------------*/
+
+.info{
+	
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	padding-top: 10px;
+
+	margin-bottom: 10px;
+	
+}
+.info-wage{
+	margin-top: 20px;
+	display: inline-block;
+	font-size: 1.2em ;
+	margin-bottom: 10px;
+	border-top: 1.5px solid rgb(96, 111, 224);
+}
+
+.info-emp
+{
+		margin-top: 50px;
+		font-size: 1.07em ;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	padding-left: 20px;
+	padding-bottom: 20px;
+
+}
+
+.emp-div
+{
+	text-align: center;
+	margin-top: 100px;
+	font-size: 1.07em;
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+
+}
+
+.employee-header
+{
+margin: 0px;
+font-size: 1.4em;
+background-color: rgb(96, 111, 224);
+color: black;
+padding: 20px;
+text-align: center;
+}
+
+.employee-th
+{
+width: 90px;
+font-size: 1.07em;
+background-color: rgb(96, 111, 224);
+padding: 10px;
+color: black;
+text-align: center;
+
+}
+
+
+
+.employee-td
+{
+	width: 90px;
+   	text-align: center;
+    padding: 15px;
+    font-size: 1em;
+
+    border-bottom: 2px solid rgb(80, 40, 140);
+    
+}
+
+
+.emp_data
+{
+	height: 35px;
+	width: 400px;
+	margin-left: 44.5em;
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+}
+.emp_data:hover
+{
+
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+
+}
+
+
+
+.employee-goback
+{
+
+	text-decoration: none;
+
+}
+
+.img-back
+{
+	width: 50px; 
+	height: 50px;
+	margin-top: 60px;
+	margin-left: 80px;	
+
+}
+
+.img-back:hover
+{
+transform: scale(1.3);
+
+}
+
+/*-------------------------------------------------Send Report Section-------------------------------------------------*/
+
+.reprt-msg
+{
+	
+	height: 60px;
+	width: 60px;
+
+}
+
+
+.send-report-header
+{
+margin: 0px;
+font-size: 1.4em;
+background-color: rgb(96, 111, 224);
+color: black;
+padding: 20px;
+text-align: center;
+
+}
+
+
+.send-report-fieldset
+{
+	margin-top: 150px;
+	height: 23vh;
+  width: 19vw;
+  
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); 
+  background-color: rgb(230, 220, 229);
+ 	
+}
+
+
+
+.send-report-tr
+{
+	height: 60px;
+}
+
+.send-report-td
+{
+	text-align: center;
+
+}
+
+
+.send-report-input
+{
+	width: 300px;
+	height: 25px;
+	color: black;
+	font-size: 1.07em;
+	background-color: white;
+}
+
+
+.send-report-input:hover
+{
+	background-color: rgb(218, 223, 237);
+
+}
+
+.send-report-input:focus
+{
+	background-color: rgb(218, 223, 237);
+}
+
+
+.send-report-button
+{
+
+	height: 35px;
+	width: 300px;
+	
+	font-size: 1em;
+	background-color: rgb(69, 75, 143);
+	color: white;
+	transition: background-color 300ms ease;
+
+}
+
+
+
+.send-report-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(72, 148, 71);
+	
+}
+
+
+.employee-goback
+{
+
+	text-decoration: none;
+
+}
+
+.img-back
+{
+	width: 50px; 
+	height: 50px;
+	margin-top: 60px;
+	margin-left: 80px;	
+
+}
+
+.img-back:hover
+{
+transform: scale(1.3);
+
+}
+
+
+/*-------------------------------------------------Emp Request Section-------------------------------------------------*/
+.emp-req-header
+{
+margin: 0px;
+font-size: 1.4em;
+background-color: rgb(96, 111, 224);
+color: black;
+padding: 20px;
+text-align: center;
+
+}
+
+
+
+.emp-div-1
+{
+		text-align: center;
+	margin-top: 100px;
+	font-size: 1.07em;
+display: flex;
+justify-content: center;
+flex-direction: column;
+
+}
+
+
+.emp-req-th
+{
+width: 90px;
+font-size: 1.07em;
+background-color: rgb(96, 111, 224);
+padding: 10px;
+color: black;
+text-align: center;
+
+}
+
+.emp-request-td
+{
+	
+width: 90px;
+	align-content: center;
+   text-align: center;
+    padding: 15px;
+    font-size: 1em;
+     border-bottom: 2px solid rgb(80, 40, 140);
+}
+
+
+.emp-req-li
+{
+			display: flex;
+	justify-content: center;
+	flex-direction: row;
+	padding-top: 10px;
+font-size: 1.2em;
+	margin-bottom: 15px;
+
+}
+
+
+.emp-div-2
+{
+			text-align: center;
+	margin-top: 100px;
+		font-size: 1.07em;
+display: flex;
+justify-content: center;
+flex-direction: column;
+}
+
+
+.emp-req-list-th
+{
+width: 90px;
+font-size: 1.07em;
+background-color: rgb(96, 111, 224);
+padding: 10px;
+color: black;
+text-align: center;
+
+
+
+}
+
+
+.emp-list-td
+{
+width: 90px;
+	align-content: center;
+   text-align: center;
+    padding: 15px;
+    font-size: 1em;
+     border-bottom: 2px solid rgb(80, 40, 140);
+}
+
+.emp-li
+{
+			display: flex;
+	justify-content: center;
+	flex-direction: row;
+	padding-top: 10px;
+font-size: 1.2em;
+	margin-bottom: 15px;
+
+
+}
+
+.emp-req-acpt-button
+{
+	font-size: 1.07em;
+	height: 4vh;
+	width: 12vw;
+	border-radius: 5px;
+	background-color: rgb(42, 156, 72);
+	color: black;
+	transition: background-color 300ms ease;
+	border: none;
+  box-shadow: 1px 2px 4px black;
+
+}
+
+
+
+.emp-req-acpt-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(2, 200, 2);
+	
+}
+
+
+.emp-req-rejct-button
+{
+	font-size: 1.07em;
+	margin-top: 8px;
+	height: 4vh;
+	width: 12vw;
+	border-radius: 5px;
+	background-color: rgb(161, 72, 81);
+	color: black;
+	transition: background-color 300ms ease;
+	border: none;
+  box-shadow: 1px 2px 4px black;
+
+}
+
+
+
+.emp-req-rejct-button:hover
+{
+	
+	transform: scale(1.05);
+	cursor: pointer;
+	background-color: rgb(200, 2, 2);
+	
+}
+
+
+
+
+.employee-req-goback
+{
+
+	text-decoration: none;
+
+}
+
+.img-back
+{
+	width: 50px; 
+	height: 50px;
+	margin-top: 60px;
+	margin-left: 80px;	
+
+}
+
+.img-back:hover
+{
+transform: scale(1.3);
+
+}
+
+//-------------------------------------------
+
+@media screen and (max-width:560px)
+{
+
+		.header-h1
+		{
+			font-size: 37px;
+
+		}
+		.header-h2
+		{
+			top: 62px;
+			font-size: 24px;
+		}
+		.dashboard-header
+		{
+
+		font-size: 1.3em;
+
+		}
+
+		.log-button
+		{
+			
+			cursor: pointer;
+			background-color: rgb(80, 40, 140);
+			
+		}
+
+		.reg-button
+		{
+
+			cursor: pointer;
+			background-color: rgb(80, 40, 140);
+			
+		}
+		.pass-res-button
+		{
+			
+
+			cursor: pointer;
+			background-color: rgb(80, 40, 140);
+			
+		}
+
+
+
+		.img-div
+		{
+			margin-top: 10px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+/*		.dashboard-div
+		{
+			
+			flex-direction: column;
+			justify-content: center;
+		}
+*/
+		  
+		
+
+}
+
+/*-------------------------------------------------The End------------------------------------------------*/

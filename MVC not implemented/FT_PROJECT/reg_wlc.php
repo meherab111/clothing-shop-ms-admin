@@ -1,0 +1,38 @@
+<?php
+session_start();
+
+
+$email = $_SESSION['email'];
+
+if (isset($_SESSION['x']) && $_SESSION['x']) {
+	// echo isset($_GET['q1']) ?  $_GET['q1'] : "Unknown User";
+
+	echo " ";
+	
+	echo $email;
+
+	echo "<hr>";
+
+	echo "WELCOME Page";
+
+	session_unset();
+	session_destroy();
+	
+	
+} 
+
+else 
+{
+	header("Location: reg_html.php");
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<body>
+<br><br><br><br>
+<a href = "reg_html.php">Go Back</a>
+</body>
+</html>
+

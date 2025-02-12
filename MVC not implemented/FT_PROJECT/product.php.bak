@@ -1,0 +1,151 @@
+
+<?php
+session_start();
+
+if (!isset($_SESSION['x'])) 
+{
+	header("Location: log_html.php");
+}
+	
+?>
+ <?php include 'header.php';?>			
+				
+<html>
+<body>
+<table>
+
+	<thead>
+		<tr>
+			<th>| Product Id   |</th>
+			<th>| Product Name |</th>
+			<th>| Quantity     |</th>
+			<th>| Sale Price   |</th>
+			<th>| Total Sale   |</th>
+			<th>| Buy Price    |</th>
+			<th>| Total Buy    |</th>
+			<th>| Profit       |</th>
+		</tr>
+			
+	</thead>
+	
+	<tbody>
+	
+	<?php
+		
+			include "db.php";
+
+				$sql_rev = "select sum(profit) as revenue from sale_info";
+				
+				$checkQuery_rev = mysqli_query($conn,$sql_rev);
+				echo "<br>";
+				echo "<br>";
+				echo "<u>Calculated Total Revenue and Sales: </u>";
+				echo "<br>";
+				
+					if($checkQuery_rev)
+				{
+					$fetch_rev = mysqli_fetch_array($checkQuery_rev);
+					$rev = $fetch_rev['revenue'];
+					echo "Total Revenue = <strong>$rev</strong>";
+					
+				}
+				 //------------------------------------------------------------
+				echo "<br>";
+
+				$sql_tot_sale = "select sum(total_sale) as entire_sale from sale_info";
+				
+				$checkQuery_tot_sale = mysqli_query($conn,$sql_tot_sale);
+				
+					if($checkQuery_tot_sale)
+				{
+					$fetch_sale = mysqli_fetch_array($checkQuery_tot_sale);
+					$sale = $fetch_sale['entire_sale'];
+					echo "Total Sale =  <strong>$sale</strong> " ;
+					
+				}
+				 //----------------------------------------------------------------
+				echo "<br><br>";
+				
+				
+				//select product, qty from sell_info order by qty desc limit 
+				
+				$sql_max_qty = "select * from sale_info where qty = (select max(qty) from sale_info) limit 10 ";
+				$checkQuery_max_qty = mysqli_query($conn,$sql_max_qty);
+
+				if ($checkQuery_max_qty)
+					{
+						echo "<u>Most Sold Products: </u>";
+						echo "<br>";
+						
+					while($fetch_qty = mysqli_fetch_array($checkQuery_max_qty))
+						{
+							$ms_product = $fetch_qty['product'];
+							$ms_qty = $fetch_qty['qty'];
+							echo "The most sold product is <strong>'$ms_product'</strong> with the quantity of <strong>$ms_qty</strong> <br>" ;
+							
+						}
+		
+					} 
+					//--------------------------------------------------------------------------
+					echo "<br><br>"; 
+					
+		$select_query = "select * from sale_info ";
+	
+
+		$query = mysqli_query($conn, $select_query);
+		
+		$row_count = mysqli_num_rows($query);
+
+		if($row_count > 0)
+		{
+			
+			
+			while($fetch = mysqli_fetch_array($query))
+			{
+		
+
+
+
+	?>
+
+		<tr>
+			<td><center><?php echo $fetch['id'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['product'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['qty'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['sale_price'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['total_sale'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['buy_price'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['total_buy'];?> &nbsp &nbsp </center></td>
+			<td><center><?php echo $fetch['profit'];?> &nbsp &nbsp </center></td>
+			
+		</tr>
+		
+		
+	<?php	
+			}
+			
+			 	
+		echo "<u>Product Details: </u>";
+	   echo "<br>";
+			
+		}
+  
+
+
+	?>
+	
+	</tbody>
+	
+	
+	
+
+</table>
+<br><br><br><br>
+<a href ="dashboard.php">Go Back</a>
+</body>
+<center>
+<?php include 'footer.php';?>	
+</center>
+
+</html>
+

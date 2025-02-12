@@ -1,0 +1,139 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['x'])) 
+{
+	header("Location: log_html.php");
+}
+	?>
+ <?php include 'header.php';?>		
+ <!DOCTYPE html>
+		<html>
+		
+		<body>
+		
+		<table>
+			
+			
+			<thead>
+				<tr>
+				
+					<th>| Employee ID  		  |</th>
+					<th>| Employee name       |</th>
+					<th>| Daily salary	  	  |</th>
+					<th>| Total days in month |</th>
+					<th>| Absent days allowed |</th>
+					<th>| Absent days		  |</th>
+
+				</tr>
+					
+			</thead>
+			
+			<br><br>
+			<tbody>
+			
+<?php	
+
+	include "db.php";
+ 
+	$sql = "SELECT * FROM emp_info";
+	
+	$checkQuery_emp = mysqli_query($conn,$sql);
+	
+	
+	$row_count = mysqli_num_rows($checkQuery_emp);
+	
+
+	if ($row_count > 0) 
+
+	{
+		$total_wage = 0;
+		echo "<u>Calculated Total Salary & Wage</u>: ";
+		echo "<br>";
+		
+		while($fetch_emp = mysqli_fetch_array($checkQuery_emp))
+			{
+		?>		
+					<tr>
+					<td><center><?php echo $fetch_emp['id'];?> &nbsp &nbsp </center></td>
+					<td><center><?php echo $fetch_emp['employee_name'];?> &nbsp &nbsp </center></td>
+					<td><center><?php echo $fetch_emp['daily_salary'];?> &nbsp &nbsp </center></td>
+					<td><center><?php echo $fetch_emp['total_days_in_month'];?> &nbsp &nbsp </center></td>
+					<td><center><?php echo $fetch_emp['absent_days_allowed'];?> &nbsp &nbsp </center></td>
+					<td><center><?php echo $fetch_emp['absent_days'];?> &nbsp &nbsp </center></td>
+				
+					
+					</tr>
+					
+
+				<?php
+				
+					$employee_name = $fetch_emp['employee_name'];
+					$daily_salary = $fetch_emp['daily_salary'];
+					$total_days_in_month = $fetch_emp['total_days_in_month'];
+					$absent_days_allowed = $fetch_emp['absent_days_allowed'];
+					$absent_days = $fetch_emp['absent_days'];
+					
+					
+				// Calculate the salary for the month
+				if ($absent_days <= $absent_days_allowed)
+					{
+				  
+					$total_salary = ($daily_salary * $total_days_in_month);
+					} 
+				else 
+					{
+					// Deduct $1,000 per day for each additional absent day beyond the limit
+					$deduction = (($absent_days - $absent_days_allowed) * $daily_salary);
+					$total_salary = (($daily_salary * $total_days_in_month) - $deduction);
+					
+					}
+
+					echo "Total Salary for <strong>'$employee_name'</strong> is = <strong>$total_salary</strong>";
+					echo "<br>";
+							
+						$total_wage = ($total_wage + $total_salary);
+					
+			}
+			echo "<br>";
+			echo "Total Employee Wage = <strong>$total_wage</strong><br>";
+		 echo "<br>";	
+		echo "<u>Employee Details Regarding Salary</u>: ";
+	   echo "<br>";
+    
+	
+    
+			
+			
+		
+			
+	} 
+		
+
+
+?>
+
+		</tbody>
+	
+
+	</table>
+<br><br><br><br>
+<a href ="dashboard.php">Go Back</a>
+</body>
+<center>
+<?php include 'footer.php';?>	
+</center>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

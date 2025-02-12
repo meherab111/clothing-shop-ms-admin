@@ -1,0 +1,252 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['x'])) 
+{
+	header("Location: log_html.php");
+}
+?>
+ <?php include 'header.php';?>
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+  
+<?php
+$email = $emailErr = "";
+
+
+//Name 
+if ($_SERVER['REQUEST_METHOD'] === "POST") 
+{
+    $flag = false;
+
+//Email
+    if (empty($_POST["email"])) {
+        $emailErr = "*Email is required";
+        $flag = true;
+    } else {
+        $email = sanitize($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "*Invalid Email format";
+            $flag = true;
+        }
+    }
+
+    if ($flag === false) 
+	{
+	
+
+			
+			
+			
+	include "db.php";
+ 
+	$sql = "select * from emp_info";
+	
+	$checkQuery_emp = mysqli_query($conn,$sql);
+	
+	
+	$row_count = mysqli_num_rows($checkQuery_emp);
+	
+
+	if ($row_count > 0) 
+
+	{
+		$total_wage = 0;
+		
+		while($fetch_emp = mysqli_fetch_array($checkQuery_emp))
+			{
+			
+				$employee_name = $fetch_emp['employee_name'];
+				$daily_salary = $fetch_emp['daily_salary'];
+				$total_days_in_month = $fetch_emp['total_days_in_month'];
+				$absent_days_allowed = $fetch_emp['absent_days_allowed'];
+				$absent_days = $fetch_emp['absent_days'];
+				
+				
+			// Calculate the salary for the month
+			if ($absent_days <= $absent_days_allowed)
+				{
+			  
+				$total_salary = ($daily_salary * $total_days_in_month);
+				} 
+			else 
+				{
+				// Deduct $1,000 per day for each additional absent day beyond the limit
+				$deduction = (($absent_days - $absent_days_allowed) * $daily_salary);
+				$total_salary = (($daily_salary * $total_days_in_month) - $deduction);
+				}
+				
+				// echo "Total Salary for <strong>'$employee_name'</strong> is = <strong>$total_salary</strong>";
+				// echo "<br>";
+				$total_wage = ($total_wage + $total_salary);
+
+			}
+			// echo "<br>";
+				// echo "Total Employee Wage = <strong>$total_wage</strong><br>";
+			// echo "<br>";	
+			// echo "<u>Employee Details Regarding Salary</u>: ";
+			// echo "<br>";	
+			
+	} 
+		
+// --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+				$sql_rev = "select sum(profit) as revenue from sale_info";
+				
+				$checkQuery_rev = mysqli_query($conn,$sql_rev);
+				// echo "<br>";
+				// echo "<br>";
+				// echo "<u>Calculated Total Revenue and Sales</u>: ";
+				// echo "<br>";
+				
+					if($checkQuery_rev)
+				{
+					$fetch_rev = mysqli_fetch_array($checkQuery_rev);
+					$rev = $fetch_rev['revenue'];
+					// echo "TOTAL REVENUE = <strong>$rev</strong>";
+					
+				}
+				 //------------------------------------------------------------
+				// echo "<br>";
+
+				$sql_tot_sale = "select sum(total_sale) as entire_sale from sale_info";
+				
+				$checkQuery_tot_sale = mysqli_query($conn,$sql_tot_sale);
+				
+					if($checkQuery_tot_sale)
+				{
+					$fetch_sale = mysqli_fetch_array($checkQuery_tot_sale);
+					$sale = $fetch_sale['entire_sale'];
+					// echo "TOTAL SALE =  <strong>$sale</strong> " ;
+					
+				}
+				 //----------------------------------------------------------------
+				// echo "<br><br>";
+				
+				
+				//select product, qty from sell_info order by qty desc limit 
+				
+				$sql_max_qty = "select * from sale_info where qty = (select max(qty) from sale_info) limit 10 ";
+				$checkQuery_max_qty = mysqli_query($conn,$sql_max_qty);
+
+				if ($checkQuery_max_qty)
+					{
+						
+					while($fetch_qty = mysqli_fetch_array($checkQuery_max_qty))
+						{
+							$ms_product = $fetch_qty['product'];
+							$ms_qty = $fetch_qty['qty'];
+							
+							
+						}
+		
+					}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------					
+					
+					$subject = "Clothing Shop Report.";
+					$body = 
+					"Report Of This Month : \r
+					Sale Details : \r
+					TOTAL REVENUE = $rev \r
+					TOTAL SALE = $sale \r
+					\n
+					Employee Details : \r
+					TOTAL EMPLOYEE WAGE = $total_wage 
+					\n
+					Thank You.";
+					$sender = "From: clothingshop618@gmail.com";
+
+					if (mail($email, $subject, $body, $sender)) 
+					{
+						
+						echo "<center>Email Sent To, <strong>'$email'</strong>.</center><br><br>";
+						
+			
+					}
+					else 
+					{
+						echo "<center><strong>*Email sending failed</center></strong>";
+					}
+
+				
+
+	}
+
+}
+
+
+
+function sanitize($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+
+ 
+
+ 
+	<form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>" novalidate>
+    
+		<center>
+		<br>
+		<br>
+        
+                <fieldset style = "width:25%;">
+                    <legend><strong>Send Dashboard Report</strong></legend>
+					
+                   <br>
+                        <table>
+     
+                                <tr style="height:50px">
+                                
+                                <td style="width:15%; text-align:center">
+                                    <label for="email">Email </label></td>
+                                    <td>
+									: <input type="email" placeholder="Enter Email Address"id="email" name="email" value = "<?php echo  $email;?>">
+									<br>
+									<?php echo $emailErr;?>
+                                </td>
+                            </tr>
+	
+                        </table>
+					
+				
+					<input type="submit" name="send_report" value="Send Report">
+						<br>
+						<br>
+				
+					
+				
+                </fieldset>
+				
+           
+		</center>
+		<br>
+				<br>
+				<br>
+				<br>
+				
+						<a href ="dashboard.php">Go Back</a>
+						<br>	
+	</form>
+ 			
+              
+
+
+			
+</body>
+<center>
+	<br>
+	<br>
+	<br>
+<?php include 'footer.php';?>	
+</center>
+</html>
+

@@ -1,0 +1,178 @@
+<?php
+session_start();
+?>
+<?php include 'header.php';?>
+<!DOCTYPE html>
+<html>
+<body>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+  
+<?php
+$password = $email = "";
+$passwordErr = $emailErr = "";
+
+//Name 
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    $flag = false;
+
+
+
+//User Name
+    if (empty($_POST["email"])) {
+        $emailErr = "*Email is required";
+        $flag = true;
+    } else {
+        $email = sanitize($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "*Invalid Email format";
+            $flag = true;
+        }
+    }
+// Password & Confirm Password
+    if (empty($_POST["password"])) {
+        $passwordErr = "*Password is required";
+        $flag = true;
+    } else {
+        $password = sanitize($_POST["password"]);
+		
+		 if (!preg_match("/^.{8,}$/", $password))
+		{
+            $passwordErr = "*At least 8 characters required";
+            $flag = true;
+        }
+
+    }
+
+	
+	
+
+    if ($flag === false) {
+
+		
+		$_SESSION['email'] = $email;
+		
+		
+		include "db.php";
+	
+		$email_search = "SELECT * FROM registered WHERE email = '$email'  AND
+		status='active'";
+		$query = mysqli_query($conn, $email_search);
+		$email_count = mysqli_num_rows($query);
+		
+		if($email_count > 0)
+		{
+				$email_pass = mysqli_fetch_assoc($query);
+				$db_pass = $email_pass['password'];
+				$pass_decode = password_verify($password,$db_pass );
+				
+				$_SESSION['pass'] = $pass_decode;
+				
+				if($pass_decode)
+				{
+				$_SESSION['x'] = true;
+				
+				header('Location: dashboard.php');
+				exit();
+				}
+				else
+				{
+					echo "<center><strong>*Password Incorrect</strong></center>";
+				}
+			
+		}
+		
+    
+        
+        // $_SESSION['x'] = true;
+        // header('Location: log_wlc.php');
+        // exit();
+    }
+}
+
+function sanitize($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+?>
+
+ 
+ 
+ <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>" novalidate>
+    
+        <center>
+		 <p> <?php 
+		 
+		 if(isset($_SESSION['notify']))
+		 {		 
+			 echo $_SESSION['notify'];
+		 }
+		 else
+		 {
+			 echo $_SESSION['notify'] = "You are Logged out, Please Login again.";
+			 
+		 }
+
+		 ?> </p> 
+		<br>
+                <fieldset style = "width:25%;">
+                    <legend><strong>LOGIN</strong></legend>
+					
+						
+                        <table>
+     
+                            <tr style="height:50px">
+                                
+                                <td style="width:20%; text-align:center">
+                                    <label for="email">Email </label></td>
+                                    <td>
+									: <input type="email" id="email" name="email" value = "<?php echo  $email;?>">
+									<br>
+									<?php echo $emailErr;?>
+                                </td>
+                            </tr>
+							
+	
+							<tr style="height:50px">
+							<td style="width:20%; text-align:center">
+								<?php echo "Password "?></td>
+								
+								<td>
+								  : <input type="password" id="password" name="password" value = "<?php echo  $password;?>">
+								  <br>
+								  <?php echo $passwordErr;?>
+	
+							</td>
+							
+							</tr>
+
+                        </table>
+						
+						 
+						<a href ="password_reset.php"> Forgot password? </a>
+						 <br><br>
+						<p>Don't have any account? <a href ="reg_html.php"> Register Here</a> </p>
+						<br>
+					<input type="submit" name="login" value="Login">
+			
+                    
+                </fieldset>
+				
+           <br><br>
+			
+			
+            </form>
+			
+        </center>        
+
+
+			
+</body>
+<center>
+<?php include 'footer.php';?>	
+</center>
+</html>
